@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-api-service  # the name of this service
+spec:
+  selector:  # apply this service to pods with the 'app' label of 'backend-api'
+    app: backend-api
+  ports:
+  - port: 3000  # Kubernetes port to expose
+    targetPort: 8000  # Pod port to forward requests to
+  type: NodePort  # The type of service to create
+        # NodePort - Exposes the Service on each Node's IP at a static port (the 'NodePort').
+        # ClusterIP - Exposes the Service on a cluster-internal IP. This makes the Service only reachable from within the cluster.
+        # LoadBalancer - Exposes the Service externally using a cloud provider's load balancer.
+        # ExternalName - Maps the Service to the contents of the 'externalName' field, by returning a CNAME record with it's value.

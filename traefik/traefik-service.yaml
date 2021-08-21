@@ -1,0 +1,19 @@
+# defines what ports to expose and on which deployment
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik
+spec:
+  selector:
+    app: traefik
+  ports:
+    - protocol: TCP
+      port: 80
+      name: web
+      targetPort: 80
+    - protocol: TCP
+      port: 8080
+      name: admin
+      targetPort: 8080
+  type: NodePort

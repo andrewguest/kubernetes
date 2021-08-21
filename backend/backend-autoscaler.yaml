@@ -1,0 +1,21 @@
+# creates a horizonal autoscaler that will handle scaling up and down the number of pods in a deployment based on the metrics defined here
+
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: backend-api-autoscaler
+
+spec:
+  scaleTargetRef:  # specifies the target resource to watch and scale
+    apiVersion: apps/v1
+    kind: Deployment  # this is going to watch and scale the 'backend-api' deployment
+    name: backend-api
+  minReplicas: 2  # minimum number of replicas the autoscaler can go down to
+  maxReplicas: 6  # maximum number of replicas the autoscaler can go up to
+  metrics:  # defines what autoscaler should watch in order to determine if the number of pods needs to be scaled up or down
+    - type: Resource
+      resource:
+        name: cpu  # scale up the number of pods if the average CPU utilizaton of the existing instances is 70% or higher
+        target:
+          type: Utilization
+          averageUtilization: 70

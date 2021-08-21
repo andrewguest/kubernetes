@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-api  # The name for this deployment
+spec:  # 'spec' defines how Kubernetes is supposed to find pods to apply this deployment to
+  replicas: 2  # how many pods to start up
+  selector:
+    matchLabels:
+      app: backend-api  # this deployment will apply to pods with an 'app' label of 'backend-api'
+  strategy:  # describes how Kubernetes should go about replacing existing pods with newer ones
+    type: RollingUpdate  # update pods in a rolling fashion
+    rollingUpdate:
+      maxUnavailable: 1  # at MOST, only 1 pod should be unavailable at a time during the rolling update
+  template:
+    metadata:
+      labels:
+        app: backend-api
+    spec:
+      containers:
+      - name: backend-api
+        image: aguest/fastapi-example:1.0  # the container image to use for this deployment. You can specify multiple images if you want to run multiple containers in the same pod
+        imagePullPolicy: IfNotPresent  # pull the image if it's not already present
+        resources:
+          requests:  # 'requests' is the minimum resources the pod will be give. Essentially, the 'guaranteed' resources.
+            memory: "50Mi"  # 50 Mebibytes or 52.429 Megabytes
+            cpu: "50m"  # 1/20 of a single core (1,000m = 1 CPU core)
+          limits:  # 'limits' is the maximum resources the pod can be given.
+            memory: "100Mi"  # 100 Mebibytes or 104.858 Megabytes
+            cpu: "100m"  # 1/10 of a single core (1,000m = 1 CPU core)
+        ports:
+        - containerPort: 8000  # the port or ports to expose on the pod
+      restartPolicy: Always  # always restart the pod if it's stopped
