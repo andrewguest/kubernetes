@@ -25,9 +25,9 @@ kubectl apply -f ./backend/backend-autoscaler.yaml
 
 |File|Description|
 |---|---|
-|[backend-deployment.yaml](backend\backend-deployment.yaml)|Defines values such as the image to use for the pods, the port(s) to open on the pods, how many pods to start, and the CPU & RAM resources the pod(s) get and their limits.|
-|[backend-service.yaml](backend\backend-service.yaml)|Tells Kubernetes to send requests on port 3000 (on the worker nodes) to port 8000 on the 'backend-api' pods.|
-|[backend-autoscaler.yaml](backend\backend-autoscaler.yaml)|Defines the minimum and maximum number of replicas that Kubernetes should keep running or scale up to and the criteria for scaling up or down.|
+|[backend-deployment.yaml](backend/backend-deployment.yaml)|Defines values such as the image to use for the pods, the port(s) to open on the pods, how many pods to start, and the CPU & RAM resources the pod(s) get and their limits.|
+|[backend-service.yaml](backend/backend-service.yaml)|Tells Kubernetes to send requests on port 3000 (on the worker nodes) to port 8000 on the 'backend-api' pods.|
+|[backend-autoscaler.yaml](backend/backend-autoscaler.yaml)|Defines the minimum and maximum number of replicas that Kubernetes should keep running or scale up to and the criteria for scaling up or down.|
 
 
 ### Traefik
@@ -42,9 +42,9 @@ kubectl apply -f ./traefik/traefik-ingress.yaml
 
 |File|Description|
 |---|---|
-|[traefik-cluster-role.yaml](traefik\traefik-cluster-role.yaml)|Defines a custom Kubernetes cluster role that service accounts can then be given.|
-|[traefik-service-account.yaml](traefik\traefik-service-account.yaml)|Creates a service account that Traefik can use to manage cluster ingress.|
-|[traefik-cluster-role-binding.yaml](traefik\traefik-cluster-role-binding.yaml)|Assigns the service account, created in traefik-service-account.yaml, the cluster role defined in traefik-cluster-role.yaml.|
-|[traefik-deployment.yaml](traefik\traefik-deployment.yaml)|Defines values such as the image to use for the pods, the port(s) to open on the pods, how many pods to start, and the CPU & RAM resources the pod(s) get and their limits.|
-|[traefik-service.yaml](traefik\traefik-service.yaml)|Tells Kubernetes what port(s) on the k8s worker nodes are tied to what pod port(s).|
-|[traefik-ingress.yaml](traefik\traefik-ingress.yaml)||
+|[traefik-cluster-role.yaml](traefik/traefik-cluster-role.yaml)|Defines a custom Kubernetes cluster role that service accounts can then be given.|
+|[traefik-service-account.yaml](traefik/traefik-service-account.yaml)|Creates a service account that Traefik can use to manage cluster ingress.|
+|[traefik-cluster-role-binding.yaml](traefik/traefik-cluster-role-binding.yaml)|Assigns the service account, created in traefik-service-account.yaml, the cluster role defined in traefik-cluster-role.yaml.|
+|[traefik-deployment.yaml](traefik/traefik-deployment.yaml)|Defines values such as the image to use for the pods, the port(s) to open on the pods, how many pods to start, and the CPU & RAM resources the pod(s) get and their limits.|
+|[traefik-service.yaml](traefik/traefik-service.yaml)|Tells Kubernetes what port(s) on the k8s worker nodes are tied to what pod port(s).|
+|[traefik-ingress.yaml](traefik/traefik-ingress.yaml)||
