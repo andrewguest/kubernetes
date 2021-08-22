@@ -8,8 +8,8 @@ spec:  # 'spec' defines how Kubernetes is supposed to find pods to apply this de
     matchLabels:
       app: backend-api  # this deployment will apply to pods with an 'app' label of 'backend-api'
   strategy:  # describes how Kubernetes should go about replacing existing pods with newer ones
-    type: RollingUpdate  # update pods in a rolling fashion
-    rollingUpdate:
+    type: RollingUpdate  
+    rollingUpdate:  # update pods in a rolling fashion
       maxUnavailable: 1  # at MOST, only 1 pod should be unavailable at a time during the rolling update
   template:
     metadata:
@@ -18,8 +18,8 @@ spec:  # 'spec' defines how Kubernetes is supposed to find pods to apply this de
     spec:
       containers:
       - name: backend-api
-        image: aguest/kubernetes-example-backend:1.0  # the container image to use for this deployment. You can specify multiple images if you want to run multiple containers in the same pod
-        imagePullPolicy: IfNotPresent  # pull the image if it's not already present
+        image: aguest/kubernetes-example-backend:1.2  # the container image to use for this deployment. You can specify multiple images if you want to run multiple containers in the same pod
+        imagePullPolicy: Always  # always pull the image
         livenessProbe:  # describes how Kubernetes should periodically verify that the pod is still running
           httpGet:  # send a GET request to the /healthcheck route
                     # this route MUST exist and return a value equal to or greater than 200 but less than 400 to be 'successful'

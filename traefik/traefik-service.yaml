@@ -16,4 +16,4 @@ spec:
       port: 8080
       name: admin
       targetPort: 8080
-  type: NodePort
+  type: LoadBalancer

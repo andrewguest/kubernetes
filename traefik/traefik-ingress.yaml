@@ -7,24 +7,28 @@ metadata:
   labels:
     name: traefik-ingress
   annotations:  # 'annotations' are used to customize the behavior of Traefik
+    kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/preserve-host: "true"
-    traefik.ingress.kubernetes.io/custom-response-headers: X-ProxyScheme:HERE_IS_MY_SCHEME
+    traefik.ingress.kubernetes.io/frontend-entry-points: http,https
 spec:
   rules:  # 'rules' defines the criteria that Traefik will use to route traffic
-  - host: example.net  # the HTTP 'Host' header must be set to 'example.net' for traffic to be routed
+  - host: api.k8s.aguest.me  # the HTTP 'Host' header must be set to this value for traffic to be routed
     http:  # HTTP traffic (HTTPS isn't setup in this example)
       paths:  # URL paths 
-      - pathType: Exact  # can be 'Prefix' or 'Exact'
-        path: "/"  # the URL route to match
+      - pathType: Prefix  # can be 'Prefix' or 'Exact'
+        path: /  # the URL route to match
         backend:
           service:  # the Kubernetes service to forward requests to
             name: backend-api-service  # the name of the Kubernetes service to forward requests to
             port:
               number: 3000  # the 'port' for the given Kubernetes service
-      - pathType: Exact
-        path: "/docs"
+  - host: k8s.aguest.me
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
         backend:
           service:
-            name: backend-api-service
-            port: 
-              number: 3000
+            name: frontend-service
+            port:
+              number: 3001
