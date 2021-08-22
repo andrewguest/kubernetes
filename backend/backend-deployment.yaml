@@ -20,6 +20,21 @@ spec:  # 'spec' defines how Kubernetes is supposed to find pods to apply this de
       - name: backend-api
         image: aguest/kubernetes-example-backend:1.0  # the container image to use for this deployment. You can specify multiple images if you want to run multiple containers in the same pod
         imagePullPolicy: IfNotPresent  # pull the image if it's not already present
+        livenessProbe:  # describes how Kubernetes should periodically verify that the pod is still running
+          httpGet:  # send a GET request to the /healthcheck route
+                    # this route MUST exist and return a value equal to or greater than 200 but less than 400 to be 'successful'
+            path: /healthcheck
+            port: 8000
+          initialDelaySeconds: 10  # Kubernetes should wait 3 seconds before performing the first check
+          periodSeconds: 20  # Kubernetes should perform this healthcheck every 5 seconds
+          timeoutSeconds: 3  # Number of seconds after which the probe request will be considered a failure
+        readinessProbe:  # describes how Kubernetes should verify that the pods is available to accept connections
+          httpGet:
+            path: /healthcheck
+            port: 8000
+          initialDelaySeconds: 10
+          periodSeconds: 30
+          timeoutSeconds: 3
         resources:
           requests:  # 'requests' is the minimum resources the pod will be give. Essentially, the 'guaranteed' resources.
             memory: "50Mi"  # 50 Mebibytes or 52.429 Megabytes
