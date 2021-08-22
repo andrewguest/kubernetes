@@ -18,7 +18,7 @@ spec:  # 'spec' defines how Kubernetes is supposed to find pods to apply this de
     spec:
       containers:
       - name: backend-api
-        image: aguest/fastapi-example:1.0  # the container image to use for this deployment. You can specify multiple images if you want to run multiple containers in the same pod
+        image: aguest/kubernetes-example-backend:1.0  # the container image to use for this deployment. You can specify multiple images if you want to run multiple containers in the same pod
         imagePullPolicy: IfNotPresent  # pull the image if it's not already present
         resources:
           requests:  # 'requests' is the minimum resources the pod will be give. Essentially, the 'guaranteed' resources.
