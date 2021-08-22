@@ -2,6 +2,8 @@
 
 This is meant to be an example and reference for how to create and deploy a fullstack application to Kubernetes. It's also meant to explain the different components of Kubernetes.
 
+You don't need to build these images, because they're available on Docker Hub but if you want to build them for yourself then there's a Dockerfile in each directory.
+
 ---
 
 |Component|Description|

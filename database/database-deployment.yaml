@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgresql
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: postgresql
+  template:
+    metadata:
+      labels:
+        app: postgresql
+    spec:
+      containers:
+      - name: postgresql
+        image: postgres:9.6.2-alpine
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: POSTGRES_USER
+            value: test
+          - name: POSTGRES_DB
+            value: test
+          - name: POSTGRES_PASSWORD
+            value: test
+        resources:
+          requests:
+            memory: "100Mi"
+            cpu: "0.1"
+          limits:
+            memory: "250Mi"
+            cpu: "0.2"
+        ports:
+        - containerPort: 5432
+          name: postgresql
+        volumeMounts:
+          - mountPath: /var/lib/postgresql
+            name: postgresql
+      volumes:
+        - name: postgresql
+          persistentVolumeClaim:
+            claimName: postgres-claim
+        
