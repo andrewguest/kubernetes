@@ -37,6 +37,9 @@ spec:
         volumeMounts:
           - mountPath: /var/lib/postgresql
             name: postgresql
+        securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
       volumes:
         - name: postgresql
           persistentVolumeClaim:
