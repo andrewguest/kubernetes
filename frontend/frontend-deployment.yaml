@@ -27,6 +27,9 @@ spec:
           limits:
             cpu: 100m
             memory: 200Mi
+        securityContext:
+          runAsNonRoot: true
+          allowPrivilegeEscalation: false
         ports:
         - containerPort: 8080
       restartPolicy: Always
