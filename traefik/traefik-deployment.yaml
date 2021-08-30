@@ -17,9 +17,6 @@ spec:
       labels:
         app: traefik
     spec:
-      securityContext:
-        allowPrivilegeEscalation: false
-        runAsNonRoot: true
       serviceAccountName: traefik-ingress-controller
       containers:
         - name: traefik
@@ -40,3 +37,6 @@ spec:
             limits:
               cpu: 200m
               memory: 500Mi
+                securityContext:
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
