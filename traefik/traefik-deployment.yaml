@@ -37,6 +37,6 @@ spec:
             limits:
               cpu: 200m
               memory: 500Mi
-                securityContext:
-          allowPrivilegeEscalation: false
-          runAsNonRoot: true
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
