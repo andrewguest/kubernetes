@@ -18,6 +18,19 @@ You don't need to build these images, because they're available on Docker Hub bu
 ## Files and their descriptions
 To make it easier on me, I've broken each Kubernetes component into it's own file even though this means more files and more commands to run. The tables below are also setup in the order that I would run the files (top file first, then work your way down).
 
+
+### Frontend
+```
+kubectl apply -f ./frontend/frontend-deployment.yaml
+kubectl apply -f ./frontend/frontend-service.yaml
+```
+
+|File|Description|
+|---|---|
+|[frontend-deployment.yaml](frontend/frontend-deployment.yaml)|Defines values such as the image to use for the pods, the port(s) to open on the pods, how many pods to start, and the CPU & RAM resources the pod(s) get and their limits.|
+|[frontend-service.yaml](frontend/frontend-service.yaml)|Tells Kubernetes to send requests on port 3001 (on the worker nodes) to port 8080 on the 'frontend' pods.|
+
+
 ### Backend
 ```
 kubectl apply -f ./backend/backend-deployment.yaml
