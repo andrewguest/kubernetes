@@ -16,7 +16,7 @@ You don't need to build these images, because they're available on Docker Hub bu
 ---
 
 ## Files and their descriptions
-To make it easier on me, I've broken each Kubernetes component into it's own file even though this means for files and more commands to run. The tables below are also setup in the order that I would run the files (top file first, then work your way down).
+To make it easier on me, I've broken each Kubernetes component into it's own file even though this means more files and more commands to run. The tables below are also setup in the order that I would run the files (top file first, then work your way down).
 
 ### Backend
 ```
