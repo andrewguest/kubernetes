@@ -21,6 +21,7 @@ spec:
       containers:
         - name: traefik
           image: traefik:v2.2
+          imagePullPolicy: Always
           args:
             - --log.level=DEBUG
             - --api
@@ -36,3 +37,6 @@ spec:
             limits:
               cpu: 200m
               memory: 500Mi
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
