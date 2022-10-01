@@ -1,5 +1,5 @@
 ﻿anyio==3.6.1
-asgiref==3.4.1
+asgiref==3.5.2
 certifi==2021.5.30
 charset-normalizer==2.0.4
 click==8.0.1
