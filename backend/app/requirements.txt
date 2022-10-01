@@ -1,7 +1,7 @@
 ﻿anyio==3.6.1
 asgiref==3.5.2
 certifi==2021.10.8
-charset-normalizer==2.0.4
+charset-normalizer==2.1.1
 click==8.0.1
 colorama==0.4.5
 fastapi==0.68.0
