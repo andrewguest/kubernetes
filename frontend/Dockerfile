@@ -1,5 +1,8 @@
 FROM node:18-bullseye-slim
 
+# Set environment variable for 
+ENV NODE_OPTIONS=--openssl-legacy-provider
+
 WORKDIR /app
 
 COPY . ./
