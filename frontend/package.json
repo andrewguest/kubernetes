@@ -14,7 +14,7 @@
         "@nuxtjs/axios": "5.13.6",
         "core-js": "3.25.5",
         "nuxt": "2.15.8",
-        "vuetify": "2.6.11"
+        "vuetify": "2.6.12"
     },
     "devDependencies": {
         "@nuxtjs/vuetify": "1.12.3",
