@@ -1,4 +1,4 @@
-﻿anyio==3.6.1
+﻿anyio==3.6.2
 asgiref==3.5.2
 certifi==2022.9.24
 charset-normalizer==2.1.1
