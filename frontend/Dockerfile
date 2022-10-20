@@ -1,4 +1,4 @@
-FROM node:18-bullseye-slim
+FROM node:19-bullseye-slim
 
 # Set environment variable for 
 ENV NODE_OPTIONS=--openssl-legacy-provider
