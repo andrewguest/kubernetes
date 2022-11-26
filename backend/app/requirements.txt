@@ -7,7 +7,7 @@ colorama==0.4.6
 fastapi==0.87.0
 gunicorn==20.1.0
 h11==0.14.0
-httpcore==0.16.1
+httpcore==0.16.2
 httptools==0.5.0
 httpx==0.23.1
 idna==3.4
