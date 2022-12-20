@@ -4846,9 +4846,9 @@ iferr@^0.1.5:
   integrity sha512-DUNFN5j7Tln0D+TxzloUjKB+CtVu6myn0JEFak6dG18mNt9YkQ6lzGCdafwofISZ1lLF3xRHJ98VKy9ynkcFaA==
 
 ignore@^5.1.8, ignore@^5.2.0:
-  version "5.2.2"
-  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.2.tgz#7e5f30224584b67aeeefe383a24a61dce4cb370d"
-  integrity sha512-m1MJSy4Z2NAcyhoYpxQeBsc1ZdNQwYjN0wGbLBlnVArdJ90Gtr8IhNSfZZcCoR0fM/0E0BJ0mf1KnLNDOCJP4w==
+  version "5.2.4"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-5.2.4.tgz#a291c0c6178ff1b960befe47fcdec301674a6324"
+  integrity sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==
 
 import-cwd@^2.0.0:
   version "2.1.0"
