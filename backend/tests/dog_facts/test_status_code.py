@@ -25,8 +25,6 @@ def test_dog_facts_default_limit():
 def test_dog_facts_provided_limit():
     """Ensure the route returns the given number of results"""
     random_limit = random.randrange(1, 20)
-    response = test_client.get(
-        "/dogfacts", params={"facts_limit": random_limit}
-    )
+    response = test_client.get("/dogfacts", params={"facts_limit": random_limit})
 
     assert len(response.json()["Dog facts"]) == random_limit
