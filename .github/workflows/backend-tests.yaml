@@ -1,0 +1,23 @@
+name: Backend API tests
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  django-tests:
+    name: Run pytest on backend API
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4.5.0
+
+      - name: Install pip requirements
+        run: pip install -r ./backend/requirements.txt
+
+      - name: Run Pytest
+        run: pytest ./backend

@@ -6,7 +6,11 @@ from routes.healthcheck import router as healthcheck_router
 from routes.dog_facts import router as dogfacts_router
 
 
-app = FastAPI(title="Kubernetes Example API", description="Kubernetes Example API", version="0.0.1")
+app = FastAPI(
+    title="Kubernetes Example API",
+    description="Kubernetes Example API",
+    version="0.0.1",
+)
 secure_headers = secure.Secure()
 
 # Middleware
