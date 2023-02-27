@@ -18,4 +18,8 @@ jobs:
         with:
           src: "./backend"
           options: "--check --diff --color"
-          jupyter: true
+      
+      - name: Run isort formatter checks
+        uses: isort/isort-action@v1.0.0
+        with:
+          requirements-files: "./backend/requirements.txt"
