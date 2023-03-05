@@ -20,6 +20,6 @@ jobs:
           options: "--check --diff --color"
       
       - name: Run isort formatter checks
-        uses: isort/isort-action@v1.0.0
+        uses: isort/isort-action@v1.1.0
         with:
           requirements-files: "./backend/requirements.txt"
