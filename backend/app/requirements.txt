@@ -19,6 +19,6 @@ secure==0.3.0
 sniffio==1.3.0
 starlette==0.25.0
 typing-extensions==4.5.0
-uvicorn==0.20.0
+uvicorn==0.30.6
 watchgod==0.8.2
 websockets==10.4
