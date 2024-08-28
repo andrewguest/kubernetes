@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: game-2048
+spec:
+  replicas: 1 # how many pods to keep running for this deployment
+  selector:
+    # This defines which pods apply to this deployment
+    # In this case, the pods with a label named "app" and a value of "game-2048"
+    matchLabels:
+      app: game-2048
+  template:
+    # Add a label named "app" with a value of "game-2048" to all pods that are started for this deployment
+    metadata:
+      labels:
+        app: game-2048
+    spec:
+      containers:
+        - name: backend # name of the container(s)
+          image: alexwhen/docker-2048 # which image to use for the container(s)
+          ports: # which port the container(s) will listen on
+            - name: http
+              containerPort: 80
