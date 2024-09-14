@@ -1,0 +1,24 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: quotes-api
+spec:
+  # Use the ngrok CRD (Custom Resource Definition, aka a custom Kubernetes object) to allow access
+  # to this service using ngrok
+  ingressClassName: ngrok
+  rules:
+    - host: ruling-monkey-certainly.ngrok-free.app
+      http:
+        paths:
+          # This is the path of the host (so https://ruling-monkey-certainly.ngrok-free.app/)
+          - path: /quotes-api
+            pathType: Prefix
+            backend:
+              # Send traffic from the specified {host}{path}
+              # (in this case, https://ruling-monkey-certainly.ngrok-free.app/) to the service with a
+              # metadata.name value of "quotes-api" and to port 80 on the pods
+              service:
+                name: quotes-api # this is defined as metadata.name in the service config
+                port:
+                  number: 80 # port that the service exposes ("port", not "targetPort")

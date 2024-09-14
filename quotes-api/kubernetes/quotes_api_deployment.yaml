@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quotes-api
+spec:
+  replicas: 1 # how many pods to keep running for this deployment
+  selector:
+    # This defines which pods apply to this deployment
+    # In this case, the pods with a label named "app" and a value of "quotes-api"
+    matchLabels:
+      app: quotes-api
+  template:
+    # Add a label named "app" with a value of "quotes-api" to all pods that are started for this deployment
+    metadata:
+      labels:
+        app: quotes-api
+    spec:
+      containers:
+        - name: quotes-api # name of the container(s)
+          image: aguest/quotes-api # which image to use for the container(s)
+          ports: # which port the container(s) will listen on
+            - name: http
+              containerPort: 8000
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
