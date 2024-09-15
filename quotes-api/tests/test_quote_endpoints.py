@@ -23,7 +23,7 @@ def test_quote_response_structure():
     """
 
     response = client.get("/quotes-api/quote")
-    quote = response.json()["quote"]
+    quote = response.json()
 
     # Check that the `quote` and `author` keys exist in the response JSON
     assert "quote" in quote.keys()
@@ -52,11 +52,11 @@ def test_multiple_quotes_limit():
 
     # Default limit of 10
     response = client.get("/quotes-api/quotes")
-    assert len(response.json()["quotes"]) == 10
+    assert len(response.json()) == 10
 
     # Change the limit
     response = client.get("/quotes-api/quotes", params={"limit": 20})
-    assert len(response.json()["quotes"]) == 20
+    assert len(response.json()) == 20
 
 
 def test_list_authors():

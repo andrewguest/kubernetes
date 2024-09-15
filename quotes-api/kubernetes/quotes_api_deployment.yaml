@@ -18,7 +18,8 @@ spec:
     spec:
       containers:
         - name: quotes-api # name of the container(s)
-          image: aguest/quotes-api # which image to use for the container(s)
+          image: aguest/quotes-api:latest # which image to use for the container(s)
+          imagePullPolicy: Always # Always pull the image when starting a new container
           ports: # which port the container(s) will listen on
             - name: http
               containerPort: 8000

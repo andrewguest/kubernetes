@@ -1,6 +1,5 @@
 import json
 import random
-import socket
 
 import secure
 from fastapi import FastAPI
@@ -34,22 +33,12 @@ class Quote(BaseModel):
     author: str
 
 
-class SystemInfo(BaseModel):
-    api_host: str
-    api_version: str
-
-
 class SingleQuoteResponse(BaseModel):
     quote: Quote
-    system_info: SystemInfo
 
 
 class MultipleQuoteResponse(BaseModel):
     quotes: list[Quote]
-    system_info: SystemInfo
-
-
-system_info = SystemInfo(api_host=socket.gethostname(), api_version=app.version)
 
 
 @app.get("/quotes-api/healthcheck", status_code=200, tags=["healthcheck"])
@@ -62,18 +51,19 @@ with open("./quotes.json", "r") as json_file:
 
 
 @app.get("/quotes-api/quote")
-async def get_single_quote() -> SingleQuoteResponse:
+async def get_single_quote() -> Quote:
     """Picks a random quote from the quotes.json file and returns it.
 
     Returns:
         dict: Random quote and its author
     """
+    random_quote = random.choice(quotes)
 
-    return SingleQuoteResponse(quote=random.choice(quotes), system_info=system_info)
+    return Quote(**random_quote)
 
 
 @app.get("/quotes-api/quotes")
-async def get_multiple_quotes(limit: int = 10) -> MultipleQuoteResponse:
+async def get_multiple_quotes(limit: int = 10) -> list[Quote]:
     """Picks multiple random quotes from the quotes.json file (up to the `limit`)
     and returns those.
 
@@ -81,9 +71,7 @@ async def get_multiple_quotes(limit: int = 10) -> MultipleQuoteResponse:
         limit (int, optional): The max number of quotes to return. Defaults to 10.
     """
 
-    return MultipleQuoteResponse(
-        quotes=random.sample(quotes, limit), system_info=system_info
-    )
+    return [Quote(**quote) for quote in random.sample(quotes, limit)]
 
 
 @app.get("/quotes-api/quotes/{author}")
